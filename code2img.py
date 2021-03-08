@@ -4,7 +4,7 @@ import os
 from PIL import Image, ImageDraw
 from matplotlib.pyplot import imshow
 import numpy as np
-def code2img(code, ext, output_dir):
+def code2img(code, output_dir):
     # print(code, ext, output_dir)
     # return: output filename
     code = bytes(code, 'utf-8')
@@ -15,7 +15,7 @@ def code2img(code, ext, output_dir):
         if Path(out_file).stat().st_size != 0:
             return out_file
 
-    image = Image.new(mode='L', size=(600, 600), color='black')
+    image = Image.new(mode='L', size=(1024, 1024), color='black')
     d = ImageDraw.Draw(image)
     d.text((0, 0), code, fill=255)
     image.save(out_file)
